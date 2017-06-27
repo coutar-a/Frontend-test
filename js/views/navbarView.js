@@ -1,8 +1,9 @@
-navbarView = Backbone.View.extend({
+var navbarView = Backbone.View.extend({
 
     source: Handlebars.getTemplate('navbarTemplate'),
     template: null,
     el: 'nav',
+    tagName:'nav',
 
     /*
     events: {
@@ -17,18 +18,20 @@ navbarView = Backbone.View.extend({
 
     */
     initialize: function () {
-        console.log(this.$el);
         this.template = Handlebars.compile(this.source);
-        this.render();
     },
 
     render: function () {
         console.log("rendering navbar");
-        this.$el.append(this.template());
-        $('.modal').modal();
-        $(".button-collapse").sideNav();
-        $('select').material_select();
-        return this;
+        console.log($('body'));
+        console.log($('.appViewContainer'));
+        console.log(this.$el.html(this.template()));
+        this.$el.html(this.template());
+        //$("nav")[0].innerHTML = this.template();
+        //$('.modal').modal();
+        ///$(".button-collapse").sideNav();
+        //$('select').material_select();
+        //return this;
         // CSS and Ajax re-initialisation.
         //this._init();
        // return this;

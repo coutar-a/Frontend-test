@@ -10,7 +10,12 @@ var router = Backbone.Router.extend({
 	}
 });
 
-console.log("starting router...");
-var app = new router;
-
-Backbone.history.start();
+$(document).ready(function() {
+	console.log("starting router...");
+	Backbone.history.start();
+	console.log($('nav'));
+	var app = new router();
+	var testModel = new audienceModel();
+	var test = audienceModel.fetchAudienceData();
+	console.log(test);
+});

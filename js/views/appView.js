@@ -1,4 +1,4 @@
-appView = Backbone.View.extend({
+var appView = Backbone.View.extend({
 
     el: '.appViewContainer',
 
