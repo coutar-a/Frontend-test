@@ -1,8 +1,5 @@
 var router = Backbone.Router.extend({
 
-	routes: {
-
-	},
 	initialize: function() {
 
 		var nav = new navbarView();
@@ -13,9 +10,8 @@ var router = Backbone.Router.extend({
 $(document).ready(function() {
 	console.log("starting router...");
 	Backbone.history.start();
-	console.log($('nav'));
 	var app = new router();
 	var testModel = new audienceModel();
-	var test = audienceModel.fetchAudienceData();
+	var test = testModel.fetchAudienceData();
 	console.log(test);
 });
