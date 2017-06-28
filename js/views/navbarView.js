@@ -3,8 +3,6 @@ var navbarView = Backbone.View.extend({
     source: Handlebars.getTemplate('navbarTemplate'),
     template: null,
     el: 'nav',
-    tagName:'nav',
-    target: '.appViewContainer',
 
     /*
     events: {
