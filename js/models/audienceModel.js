@@ -95,7 +95,7 @@ var audienceModel = Backbone.Model.extend({
 		this.url = "http://127.0.0.1:8081/js/data/audience.json";
 		var self = this;
 
-		return $.ajax({
+		$.ajax({
 			url: self.url,
 			type: 'GET',
 			dataType: 'json',
