@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Front-end dev test.",
   "main": "index.html",
-  "dependencies": {},
+  "dependencies": {
+    "http-server": "^0.10.0"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "http-server . --cors -p 8081"

@@ -4,17 +4,20 @@ var navbarView = Backbone.View.extend({
     template: null,
     el: 'nav',
     graphViews: {
+        splash: null,
         audience: null,
         usageBW: null,
         country: null
     },
     events: {
 
-        "click .pageButton": "renderGraph"
+        "click .pageButton": "renderGraph",
+        "click .brand-logo": "renderSplash"
     },
     
     initialize: function () {
         this.template = Handlebars.compile(this.source);
+        this.graphViews.splash = new splashView();
         this.graphViews.audience = new audienceView({model: new audienceModel()});
         this.graphViews.usageBW = new usageBandwidthView({model: new usageBandwidthModel()});
         this.graphViews.country = new countryView({model: new countryModel()});
@@ -23,6 +26,7 @@ var navbarView = Backbone.View.extend({
     render: function () {
         console.log("rendering navbar");
         this.$el.html(this.template());
+        this.graphViews.splash.render();
     },
     renderGraph: function(event) {
 
@@ -38,5 +42,8 @@ var navbarView = Backbone.View.extend({
             this.graphViews.country.render();
             break;
         }
+    },
+    renderSplash: function() {
+        this.graphViews.splash.render();
     }
 });
