@@ -1,8 +1,8 @@
 var countryModel = Backbone.Model.extend({
 	spec: {
   "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-  "width": 300,
-  "height": 240,
+  "width": 900,
+  "height": 720,
   "padding": 5,
 
   "data": [
@@ -93,10 +93,10 @@ var countryModel = Backbone.Model.extend({
           "from": {"data": "bars"},
           "encode": {
             "enter": {
-              "x": {"field": "x2", "offset": -5},
+              "x": {"field": "x2", "offset": 5},
               "y": {"field": "y", "offset": {"field": "height", "mult": 0.5}},
-              "fill": {"value": "white"},
-              "align": {"value": "right"},
+              "fill": {"value": "black"},
+              "align": {"value": "left"},
               "baseline": {"value": "middle"},
               "text": {"field": "datum.value"}
             }
@@ -121,16 +121,18 @@ var countryModel = Backbone.Model.extend({
 			},
 			success: function(data, textStatus, xhr) {
 
-				console.log(data);
-				for (var i = 0 ; i < data.length ; i++) {
+				for (var i = 0 ; i < (data.length / 6) ; i++) {
 					var tmp = data[i];
 					/*self.spec.data[0].values.push({"x": tmp.country, "y": tmp.cdn, "c": 0});
 					self.spec.data[0].values.push({"x": tmp.country, "y": tmp.p2p, "c": 1});*/
-					self.spec.data[0].values.push({"category": tmp.country, "position": 0, "value": tmp.cdn});
-					self.spec.data[0].values.push({"category": tmp.country, "position": 1, "value": tmp.p2p});
+
+
+					self.spec.data[0].values.push({"category": tmp.country, "position": 0, "value": parseInt(tmp.cdn)});
+					self.spec.data[0].values.push({"category": tmp.country, "position": 1, "value": parseInt(tmp.p2p)});
 					//self.spec.data[0].values.push({"category": tmp.country, "position": 3, "amount": tmp.percentage});
 				}
-				console.log(self.spec.data[0].values);
+
+				console.log(self.spec);
 				if (callback != undefined)
 					callback(self.spec);
 			},
